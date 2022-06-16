@@ -24,7 +24,7 @@ struct naglowekObrazu {
     int wazneKolory;
 } Obraz;
 
-int main(int arc, char * argv[]) {
+int main(int arc, char * argv[]) {    // glowny program
     FILE* plik = fopen("test.bmp", "rb");
 
     if (plik == nullptr)
@@ -37,7 +37,7 @@ int main(int arc, char * argv[]) {
         cout << "Plik zostal otwarty!\n";
     }
 
-    cout << "\n-----INFORMACJE O PLIKU-----" << endl;
+    cout << "\n-----INFORMACJE O PLIKU-----" << endl;  // wyswietlenie informacji o pliku
     fread(&Plik.typ, sizeof(Plik.typ), 1, plik);
     cout << "Typ pliku: " << hex << Plik.typ << endl;
     fread(&Plik.rozmiarPliku, sizeof(Plik.rozmiarPliku), 1, plik);
@@ -49,7 +49,7 @@ int main(int arc, char * argv[]) {
     fread(&Plik.pozycjaDanych, sizeof(Plik.pozycjaDanych), 1, plik);
     cout << "Pozycja danych obrazkowych: " << Plik.pozycjaDanych << endl;
 
-    cout << "\n-----INFORMACJE O OBRAZIE-----" << endl;
+    cout << "\n-----INFORMACJE O OBRAZIE-----" << endl; // wyswietlenie informacji o obrazie
     fseek(plik, 14, SEEK_SET);
     fread(&Obraz.wieloscNaglowkaInfo, sizeof(Obraz.wieloscNaglowkaInfo), 1, plik);
     cout << "Wielkosc naglowka informacyjnego: " << Obraz.wieloscNaglowkaInfo << endl;
@@ -75,7 +75,7 @@ int main(int arc, char * argv[]) {
     cout << "Liczba waznych kolorow w palecie: " << Obraz.wazneKolory << endl;
 
 
-    FILE* negatyw = fopen("negatyw.bmp", "wb");
+    FILE* negatyw = fopen("negatyw.bmp", "wb");  // tworzenie negatywu obrazu
     if (negatyw == nullptr)
     {
         cout << "Blad! Nie mozna utworzyc negatywu...!";
@@ -86,14 +86,14 @@ int main(int arc, char * argv[]) {
         cout << "\nTrwa tworzenie negatywu obrazu...\n";
     }
 
-    fseek(negatyw, 0, SEEK_SET);   // Tworzenie pliku
+    fseek(negatyw, 0, SEEK_SET);   // tworzenie negatywu obrazu (dane pliku)
     fwrite(&Plik.typ, sizeof(Plik.typ), 1, negatyw);
     fwrite(&Plik.rozmiarPliku, sizeof(Plik.rozmiarPliku), 1, negatyw);
     fwrite(&Plik.zarezerwowane1, sizeof(Plik.zarezerwowane1), 1, negatyw);
     fwrite(&Plik.zarezerwowane2, sizeof(Plik.zarezerwowane2), 1, negatyw);
     fwrite(&Plik.pozycjaDanych, sizeof(Plik.pozycjaDanych), 1, negatyw);
 
-    fseek(negatyw, 14, SEEK_SET);  // Tworzenie obrazu
+    fseek(negatyw, 14, SEEK_SET);  // // tworzenie negatywu obrazu (dane obrazu)
     fwrite(&Obraz.wieloscNaglowkaInfo, sizeof(Obraz.wieloscNaglowkaInfo), 1, negatyw);
     fwrite(&Obraz.szerokoscObrazu, sizeof(Obraz.szerokoscObrazu), 1, negatyw);
     fwrite(&Obraz.wysokoscObrazu, sizeof(Obraz.wysokoscObrazu), 1, negatyw);
@@ -119,7 +119,7 @@ int main(int arc, char * argv[]) {
     }
 
 
-    fclose(plik);
+    fclose(plik);     // zamkniecie plikow
     fclose(negatyw);
     cout << "\n>>>Utworzono negatyw obrazu." << endl;
 
