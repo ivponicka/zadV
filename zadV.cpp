@@ -2,7 +2,7 @@
 
 using namespace std;
 
-struct naglowekPliku {
+struct naglowekPliku {    // dane naglowka pliku
     short typ;
     int rozmiarPliku;
     short zarezerwowane1;
@@ -10,7 +10,7 @@ struct naglowekPliku {
     int pozycjaDanych;
 } Plik;
 
-struct naglowekObrazu {
+struct naglowekObrazu {    // dane naglowka obrazu
     int wieloscNaglowkaInfo;
     int szerokoscObrazu;
     int wysokoscObrazu;
