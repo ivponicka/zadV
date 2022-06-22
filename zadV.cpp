@@ -74,7 +74,6 @@ int main(int arc, char * argv[]) {    // glowny program
     fread(&Obraz.wazneKolory, sizeof(Obraz.wazneKolory), 1, plik);
     cout << "Liczba waznych kolorow w palecie: " << Obraz.wazneKolory << endl;
 
-
     FILE* negatyw = fopen("negatyw.bmp", "wb");  // tworzenie negatywu obrazu
     if (negatyw == nullptr)
     {
@@ -117,7 +116,6 @@ int main(int arc, char * argv[]) {    // glowny program
         negatywObraz = INT_MAX - negatywObraz;
         fwrite(&negatywObraz, 3, 1, negatyw);
     }
-
 
     fclose(plik);     // zamkniecie plikow
     fclose(negatyw);
