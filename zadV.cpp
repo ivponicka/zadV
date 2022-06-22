@@ -121,7 +121,8 @@ int main(int arc, char * argv[]) {    // glowny program
 
     fclose(plik);     // zamkniecie plikow
     fclose(negatyw);
-    cout << "\n>>>Utworzono negatyw obrazu." << endl;
+
+    cout << "\n>>>Utworzono negatyw obrazu." << endl; // wyswietlenie informacji o utworzeniu negatywu
 
     return 0;
 }
